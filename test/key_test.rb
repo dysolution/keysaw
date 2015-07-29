@@ -41,13 +41,13 @@ class TestKey < Minitest::Test
 
   def test_can_be_followed_with
     k1 =  Key.new('Amin')
-    assert k1.can_be_followed_with(Key.new('Emin'))
-    assert k1.can_be_followed_with(Key.new('Dmin'))
-    assert k1.can_be_followed_with(Key.new('Cmaj'))
-    assert k1.can_be_followed_with(Key.new('Amin'))
+    assert k1.can_be_followed_with Key.new('Emin')
+    assert k1.can_be_followed_with Key.new('Dmin')
+    assert k1.can_be_followed_with Key.new('Cmaj')
+    assert k1.can_be_followed_with Key.new('Amin')
 
-    refute k1.can_be_followed_with(Key.new('Fmin'))
-    refute k1.can_be_followed_with(Key.new('D#min'))
-    refute k1.can_be_followed_with(Key.new('Cmin'))
+    refute k1.can_be_followed_with Key.new('Fmin')
+    refute k1.can_be_followed_with Key.new('D#min')
+    refute k1.can_be_followed_with Key.new('Cmin')
   end
 end
