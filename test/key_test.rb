@@ -8,12 +8,9 @@ class TestKey < Minitest::Test
     @major_key = Key.new("Dmaj")
   end
 
-  def test_minor
-    assert @minor_key.minor?
-  end
-
-  def test_major
-    assert @major_key.major?
+  def test_to_s
+    assert_equal "Dmaj", @major_key.to_s
+    assert_equal "Gmin", @minor_key.to_s
   end
 
   def test_quality

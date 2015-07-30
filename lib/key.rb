@@ -1,35 +1,20 @@
-class NullKey
-  def up_fifth
-    self
-  end
-
-  def down_fifth
-    self
-  end
-
-  def relative
-    self
-  end
-end
-
-
 class Key
 
   MINOR_KEYS = %w(G#min D#min A#min Fmin Cmin Gmin Dmin Amin Emin Bmin F#min C#min)
   MAJOR_KEYS = %w(Bmaj F#maj C#maj G#maj D#maj A#maj Fmaj Cmaj Gmaj Dmaj Amaj Emaj)
 
-  attr_accessor :key
+  attr_reader :key
 
   def initialize(key)
     @key = key
   end
 
-  def major?
-    @key.downcase.end_with?('maj')
+  def to_s
+    @key.to_s
   end
 
-  def minor?
-    @key.downcase.end_with?('min')
+  def ==(other)
+    self.to_s == other.to_s
   end
 
   def quality
@@ -60,9 +45,17 @@ class Key
 
   private
 
+  def major?
+    @key.downcase.end_with?('maj')
+  end
+
+  def minor?
+    @key.downcase.end_with?('min')
+  end
+
   def keys
-    if major? then return Key::MAJOR_KEYS end
-    if minor? then return Key::MINOR_KEYS end
+    if major? then return MAJOR_KEYS end
+    if minor? then return MINOR_KEYS end
   end
 
   def relatives
